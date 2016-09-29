@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'ctrl.rb'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  description "Control Infrastructure"
+
+  main do |command, env_name, instance_name|
+    cmd_klass = case command.strip
+    when 'ls'
+      Ctrl::Commands::ListInstances
+    when 'ssh'
+      Ctrl::Commands::Ssh
+    end
+
+    cmd_klass.new(env_name: env_name, instance_name: instance_name).perform
+  end
+
+  arg :command
+  arg :env_name, :optional
+  arg :instance_name, :optional
+
+  version Ctrl::VERSION
+
+  # use_log_level_option toggle_debug_on_signal: 'USR1'
+  leak_exceptions true
+  go!
+end
