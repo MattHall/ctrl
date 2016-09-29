@@ -2,7 +2,8 @@ module Ctrl
   class SshCommand
     include Virtus::Model
 
-    SSH_USER = 'deploy'
+    NAT_USER = ENV['CTRL_SSH_NAT_USER'] || 'ec2_user'
+    SSH_USER = ENV['CTRL_SSH_USER'] || 'ubuntu'
 
     attribute :nat_instance
     attribute :target_instance
@@ -12,11 +13,11 @@ module Ctrl
     end
 
     def direct_cmd
-      "ssh #{SSH_USER}@#{nat_instance.public_ip_address}"
+      "ssh -A #{SSH_USER}@#{nat_instance.public_ip_address}"
     end
 
     def proxied_cmd
-      "ssh -A -t #{SSH_USER}@#{nat_instance.public_ip_address} \"ssh #{target_instance.private_ip_address}\""
+      "ssh -A -t #{CTRL_SSH_NAT_USER}@#{nat_instance.public_ip_address} \"ssh #{CTRL_SSH_USER}@#{target_instance.private_ip_address}\""
     end
 
     def to_s
