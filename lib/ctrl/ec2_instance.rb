@@ -11,9 +11,12 @@ module Ctrl
 
     def self.from_instance(_instance)
       new.tap do |i|
+        name_tag = _instance.tags.select {|e| e.key == 'Name'}.first
+        env_tag = _instance.tags.select {|e| e.key == 'Environment'}.first
+
         i.private_ip_address = _instance.private_ip_address
-        i.name = _instance.tags.select {|e| e.key == 'Name'}.first&.value
-        i.environment = _instance.tags.select {|e| e.key == 'Environment'}.first&.value
+        i.name = name_tag.value if name_tag
+        i.environment = env_tag.value if env_tag
         i.state = _instance.state.name
         i.instance_id = _instance.instance_id
         i.public_ip_address = _instance.public_ip_address

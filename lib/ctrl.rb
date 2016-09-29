@@ -1,7 +1,6 @@
 require 'aws-sdk'
 require 'virtus'
 require 'readline'
-require 'pry'
 
 require "ctrl/version"
 

@@ -4,27 +4,19 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ctrl/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ctrl"
+  spec.name          = "infra-ctrl"
   spec.license=""
   spec.version       = Ctrl::VERSION
   spec.authors       = ["Matt Hall"]
   spec.email         = ["matt@codebeef.com"]
 
   spec.summary       = "Control infra"
-  spec.description   = "Simple way to control infra"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  spec.description   = "Simple way to ls / ssh into vpns"
+  spec.homepage      = "https://github.com/MattHall/ctrl"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir        = "bin"
+  spec.executables   = ["ctrl"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "virtus"
