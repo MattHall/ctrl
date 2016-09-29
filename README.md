@@ -1,36 +1,36 @@
 # Ctrl
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ctrl`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a simple gem to ease listing and sshing to instances in an AWS VPC.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'ctrl'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install ctrl
+
+Add environment variables for AWS:
+
+* AWS_DEFAULT_REGION
+* AWS_SECRET_ACCESS_KEY
+* AWS_ACCESS_KEY_ID
+
+As well as a couple for specifying the users to log in as when sshing to the nat and internal instances:
+
+* CTRL_SSH_USER
+* CTRL_SSH_NAT_USER
+
+## Notes
+
+Assumptions about your infrastructure:
+
+1. The nat instance is tagged with tag:Name=nat
+2. Each instance has a tag:Environment
+3. VPC private instances use the same user to log in
+4. You have the necessary keys locally, and are fine forwarding your agent
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ ctrl ls <env> <instance name>
+    $ ctrl ssh <env> <instance name>
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ctrl.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/MattHall/ctrl

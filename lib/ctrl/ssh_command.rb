@@ -17,7 +17,7 @@ module Ctrl
     end
 
     def proxied_cmd
-      "ssh -A -t #{SSH_USER}@#{nat_instance.public_ip_address} \"ssh #{NAT_USER}@#{target_instance.private_ip_address}\""
+      "ssh -A -t #{NAT_USER}@#{nat_instance.public_ip_address} \"ssh #{SSH_USER}@#{target_instance.private_ip_address}\""
     end
 
     def to_s
