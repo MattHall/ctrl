@@ -4,7 +4,7 @@ This is a simple gem to ease listing and sshing to instances in an AWS VPC.
 
 ## Installation
 
-    $ gem install ctrl
+    $ gem install infra-ctrl
 
 Add environment variables for AWS:
 
