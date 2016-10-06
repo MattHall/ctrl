@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ctrl (0.1.0)
+    infra-ctrl (0.1.5)
       aws-sdk (~> 2)
       methadone (~> 1.9.2)
       virtus
@@ -93,7 +93,7 @@ PLATFORMS
 DEPENDENCIES
   aruba
   bundler (~> 1.12)
-  ctrl!
+  infra-ctrl!
   pry
   rake (~> 10.0)
   rdoc

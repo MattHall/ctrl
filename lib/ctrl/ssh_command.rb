@@ -8,12 +8,12 @@ module Ctrl
     attribute :nat_instance
     attribute :target_instance
 
-    def target_is_nat?
-      nat_instance.instance_id == target_instance.instance_id
+    def target_is_public?
+      target_instance.public_ip_address.to_s != ""
     end
 
     def direct_cmd
-      "ssh -A #{SSH_USER}@#{nat_instance.public_ip_address}"
+      "ssh -A #{SSH_USER}@#{target_instance.public_ip_address}"
     end
 
     def proxied_cmd
@@ -21,7 +21,7 @@ module Ctrl
     end
 
     def to_s
-      return direct_cmd if target_is_nat?
+      return direct_cmd if target_is_public?
       proxied_cmd
     end
   end
