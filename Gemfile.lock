@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infra-ctrl (0.1.5)
+    infra-ctrl (0.1.6)
       aws-sdk (~> 2)
       methadone (~> 1.9.2)
       virtus
