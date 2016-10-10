@@ -26,6 +26,7 @@ module Ctrl
     end
 
     def perform
+      return 'No instances found' if instances.empty?
       instances.size == 1 ? instances.first : selection
     end
   end
