@@ -5,7 +5,7 @@ require 'ctrl/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "infra-ctrl"
-  spec.license=""
+  spec.license       = "MIT"
   spec.version       = Ctrl::VERSION
   spec.authors       = ["Matt Hall"]
   spec.email         = ["matt@codebeef.com"]
@@ -19,14 +19,13 @@ Gem::Specification.new do |spec|
   spec.executables   = ["ctrl"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "virtus"
-  spec.add_dependency('methadone', '~> 1.9.2')
+  spec.add_dependency "virtus", '~> 1.0'
+  spec.add_dependency('methadone', '~> 1.9')
   spec.add_dependency('aws-sdk', '~> 2')
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency('rdoc')
-  spec.add_development_dependency('aruba')
-  spec.add_development_dependency('pry')
+  spec.add_development_dependency('aruba', "~> 0.14")
+  spec.add_development_dependency('pry', "0.14")
 end
